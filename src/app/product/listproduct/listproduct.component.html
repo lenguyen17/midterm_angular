@@ -27,7 +27,9 @@
                     <td>{{ i+1 }}</td>
                     <td class="product-item__name">
                         <div class="product-item__name-wrapper">
-                            <img [src]="product.image" alt="">
+                            <div class="product-item__name-img-wrapper">
+                                <img [src]="product.image" alt="">
+                            </div>
                             <p class="clamp-line">{{ product.title }}</p>
 
                         </div>

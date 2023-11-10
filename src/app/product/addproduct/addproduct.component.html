@@ -3,8 +3,11 @@
         <a [routerLink]="['/']"><i class="fa-solid fa-angles-left"></i> Danh sách sản phẩm</a>
         
     </div>
-    <h3 class="product-list__title text-center">
+    <h3 *ngIf="!idEdit" class="product-list__title text-center">
         Thêm sản phẩm mới
+    </h3>
+    <h3 *ngIf="idEdit" class="product-list__title text-center">
+        Sửa sản phẩm
     </h3>
     
     <div class="product-add__form-wrapper">

@@ -73,6 +73,8 @@ export class AddproductComponent {
         .then((result) => {
           console.log('thêm thành công product :>> ', result);
           this.clearForm(form);
+        form.reset();
+
           this.isSuccess = true;
           this.idTimeout = setTimeout(() => {
             this.isSuccess = false
@@ -107,7 +109,6 @@ export class AddproductComponent {
     }
   }
   clearForm(form:NgForm) {
-    // form.reset();
     this.pdForm = new Product()
     this.isValid = false;
     this.loadImgDemo()
