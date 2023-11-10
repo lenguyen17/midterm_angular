@@ -1,0 +1,106 @@
+<div class="product-add__containner container-fluid p-3">
+    <div class="product-list__breadcrumb d-flex justify-content-between px-3 px-xl-5">
+        <a [routerLink]="['/']"><i class="fa-solid fa-angles-left"></i> Danh sách sản phẩm</a>
+        
+    </div>
+    <h3 class="product-list__title text-center">
+        Thêm sản phẩm mới
+    </h3>
+    
+    <div class="product-add__form-wrapper">
+        <div class="alert alert-success" *ngIf="isSuccess">
+            <strong>Success!</strong> Thêm sản phẩm thành công!.
+          </div>
+        <form action="" class="product-add__form" #frm="ngForm" (submit)="addProduct(frm)">
+            <!-- name -->
+            <div class="form-group" [ngClass]="{'invalid': title.errors && (title.dirty || isValid)}">
+                <label for="" class="form-label">Tên sản phẩm:</label>
+                <input type="text" class="form-control" name="title" #title="ngModel" [(ngModel)]="pdForm.title"
+                    placeholder="Nhập tên sản phẩm" required>
+                <div class="form-message" *ngIf="title.errors && (title.dirty || isValid)">
+                    <span *ngIf="title.errors['required']">Vui lòng nhập tên sản phẩm</span>
+                </div>
+            </div>
+            <!-- category - price -->
+            <div class="row">
+                <div class="col-6">
+                    <!-- category -->
+                    <div class="form-group" [ngClass]="{'invalid': category.errors && (category.dirty || isValid)}">
+                        <label for="" class="form-label">Danh mục:</label>
+                        <select class="form-select" name="category" #category="ngModel" [(ngModel)]="pdForm.category"
+                            required>
+                            <option [selected]=" pdForm.category==''?true:false" value="">Chọn danh mục</option>
+                            <option *ngFor="let item of categories" [value]="item">{{item}}</option>
+                        </select>
+                        <div class="form-message" *ngIf="category.errors && (category.dirty || isValid)">
+                            <span *ngIf="category.errors['required']">Vui lòng nhập tên sản phẩm</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <!-- price -->
+                    <div class="form-group" [ngClass]="{'invalid': price.errors && (price.dirty || isValid)}">
+                        <label for="" class="form-label">Giá:</label>
+                        <input type="number" class="form-control" name="price" #price="ngModel"
+                            [(ngModel)]="pdForm.price" placeholder="Nhập giá sản phẩm" required min="1">
+                        <div class="form-message" *ngIf="price.errors && (price.dirty || isValid)">
+                            <span *ngIf="price.errors['min']">Vui lòng nhập giá sản phẩm</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <!-- rating - view -->
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="" class="form-label">Ratings:</label>
+                        <input type="text" class="form-control" name="rate" [(ngModel)]="pdForm.rating.rate"
+                            placeholder="Nhập rating (default 5 start)">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="" class="form-label">Lượt xem:</label>
+                        <input type="text" class="form-control" name="count" [(ngModel)]="pdForm.rating.count"
+                            placeholder="Nhập lượt xem sản phẩm (default 79 view)">
+                    </div>
+                </div>
+            </div>
+            <!-- description -->
+            <div class="form-group" [ngClass]="{'invalid': description.errors && (description.dirty || isValid)}">
+                <label for="" class="form-label">Mô tả:</label>
+                <textarea class="form-control" name="" id="" cols="30" rows="5" name="description"
+                    #description="ngModel" [(ngModel)]="pdForm.description" placeholder="Nhập mô tả sản phẩm"
+                    required></textarea>
+                <div class="form-message" *ngIf="description.errors && (description.dirty || isValid)">
+                    <span *ngIf="description.errors['required']">Vui lòng không để trống thông tin</span>
+                </div>
+            </div>
+            <!-- image -->
+            <div class="mt-3">
+                <div class="form-group" [ngClass]="{'invalid': image.errors && (image.dirty || isValid)}">
+                    <label for="" class="form-label">Hình ảnh (example : https://fakestoreapi.com/img/81XH0e8fefL._AC_UY879_.jpg ):</label>
+                    <input type="text" class="form-control" name="image" #image="ngModel" [(ngModel)]="pdForm.image" 
+                        placeholder="Nhập url hình ảnh sản phẩm" required (change)="loadImgDemo(pdForm.image)">
+                    <div class="form-message" *ngIf="image.errors && (image.dirty || isValid)">
+                        <span *ngIf="image.errors['required']">Vui lòng nhập url hình ảnh sản phẩm</span>
+                    </div>
+                </div>
+                <img class="product-add__img-demo border border-1 p-2" width="80px" src="" alt="">
+            </div>
+            <div class="form-submit d-flex justify-content-end mt-4">
+                <button [disabled]="!idEdit" *ngIf="idEdit; else other_content" type="submit" class="btn btn-primary float-end">Cập nhật sản phẩm</button>
+                <ng-template #other_content>
+                    <button type="submit" class="btn btn-primary">Thêm sản phẩm</button>
+                </ng-template>
+                
+                <button type="button" class="btn btn-secondary ms-2" (click)="clearForm(frm)">Cancel</button>
+            
+            </div>
+        </form>
+    </div>
+
+
+</div>

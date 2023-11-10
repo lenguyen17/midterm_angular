@@ -1,0 +1,56 @@
+<section class="product-list__containner container-fluid p-3">
+    <div class="product-list__breadcrumb d-flex justify-content-between px-3 px-xl-5">
+        <a href=""><i class="fa-solid fa-angles-left"></i> Quay về trang chính</a>
+        <a [routerLink]="['/product/add']" class="btn btn-primary">
+            Add Product
+        </a>
+    </div>
+    <h3 class="product-list__title text-center">
+        Danh sách sản phẩm
+    </h3>
+    <div class="px-3 px-xl-5 pt-4">
+        <table class="table">
+            <thead class="table-header">
+                <tr>
+                    <th>Id</th>
+                    <th class="product-header__name">Product</th> 
+                    <th class="product-header__category">Category</th>
+                    <th class="product-header__price">Price</th>
+                    <th class="">Rating</th>
+                    <th class="product-header__category">Count</th>
+                    <th class="product-header__description">Description</th>
+                    <th class="product-header__category">Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of listProduct,let i = index;" class="product-list__item">
+                    <td>{{ i+1 }}</td>
+                    <td class="product-item__name">
+                        <div class="product-item__name-wrapper">
+                            <img [src]="product.image" alt="">
+                            <p class="clamp-line">{{ product.title }}</p>
+
+                        </div>
+                    </td> 
+                    <td class="product-item__category">{{ product.category }}</td>
+                    <td class="product-item__price">${{ product.price }}</td>
+                    <td class="product-item__rate">{{ product.rating.rate }}</td>
+                    <td class="product-item__view"> {{ product.rating.count }}</td>
+                    <td class="product-item__description">
+                        <p class="clamp-line">
+                            {{ product.description }}
+                        </p>
+                    </td>
+                    <td class="product-item__edit">
+                        <div>
+                            <a [routerLink]="['/product/edit/'+product.id]" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a class="btn btn-danger ms-2" (click)="removeProduct(product.id)"><i class="fa-solid fa-trash"></i></a>
+                        </div>
+                    </td>
+    
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</section>
