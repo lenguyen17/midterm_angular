@@ -1,0 +1,36 @@
+
+.product-add__form-wrapper {
+    margin: 0 auto;
+    max-width: 75%;
+}
+
+
+
+.form-group {
+    min-height: 95px;
+    .form-label {
+        
+    }
+    .form-message {
+        color: red;
+        margin-left: 12px;
+        // display: none;
+    }
+}
+.form-group.invalid {
+    .form-control {
+        background-color: rgb(255, 241, 241);
+        border-color: red ;
+    }
+    .form-select {
+        background-color: rgb(255, 241, 241);
+        border-color: red ;
+    }
+    .form-message{
+        display: block;
+    }
+}
+.form-submit button {
+    min-width: 250px;
+}
+

@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-5 mx-auto">
+      <div class="card my-5">
+        <div class="card-body">
+          <h1 style="text-align: center;">Register</h1>
+          <form #frm="ngForm" (submit)="onRegister()">
+            <div class="mb-3">
+              <label for="name" class="form-label">User Name</label>
+              <input type="text" class="form-control" [(ngModel)]="user.username" name="name" id="name">
+            </div>
+            <div class="mb-3">
+              <label for="firstname" class="form-label">First Name</label>
+              <input type="text" class="form-control" [(ngModel)]="user.name.firstname" name="firstname" id="firstname">
+            </div>
+            <div class="mb-3">
+              <label for="lastname" class="form-label">Last Name</label>
+              <input type="text" class="form-control" [(ngModel)]="user.name.lastname" name="lastname" id="lastname">
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="text" class="form-control" [(ngModel)]="user.email" name="email" id="email">
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="text" class="form-control" [(ngModel)]="user.password" name="password" id="password">
+            </div>
+            <div class="mb-3">
+              <label for="phone" class="form-label">Phone</label>
+              <input type="text" class="form-control" [(ngModel)]="user.phone" name="phone" id="phone">
+            </div>
+            <div class="mb-3">
+              <label for="address" class="form-label">Address</label>
+              <input type="text" class="form-control mb-2" [(ngModel)]="user.address.city" name="city" id="city">
+              <input type="text" class="form-control mb-2" [(ngModel)]="user.address.street" name="street" id="street">
+              <input type="number" class="form-control mb-2" [(ngModel)]="user.address.number" name="number" id="number">
+              <input type="text" class="form-control mb-2" [(ngModel)]="user.address.zipcode" name="zipcode" id="zipcode">
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <button type="submit" class="btn btn-primary">Register</button>
+              <a href="" [routerLink]="['/login']">Login</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

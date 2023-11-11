@@ -1,0 +1,27 @@
+<section class="sidebar-container" style="position: fixed; top: 56px; left: 0; bottom:0; border-right: 1px solid rgba(0,0,0,0.3);">
+    <div class="d-flex flex-column flex-shrink-0 bg-light" style="width: 4.5rem; height: 100%;">
+    <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+      <li class="nav-item ">
+        <a [routerLink]="['/']" class="nav-link  py-3 border-bottom" aria-current="page" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
+          <i class="fa-solid fa-house-chimney"></i>
+        </a>
+      </li>
+
+      <li>
+        <a [routerLink]="['product']" class="nav-link py-3 border-bottom" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Products">
+          <i class="fa-brands fa-product-hunt"></i>
+        </a>
+      </li>
+    </ul>
+    <div class="">
+      <button *ngIf="!isLoggedIn()" (click)="login()" class="user-btn py-3">
+        Login
+      </button>
+      <button *ngIf="isLoggedIn()" (click)="logout()" class="user-btn py-3" >
+        Logout
+      </button>
+    </div>
+  </div>
+
+
+</section>
